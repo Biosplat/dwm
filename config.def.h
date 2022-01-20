@@ -7,13 +7,13 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const char *fonts[]          = { "Iosevka Curly:size=10" };
-static const char dmenufont[]       = "Iosevka Curly:size=10";
-static const char col_gray1[]       = "#282a36";
-static const char col_gray2[]       = "#44475a";
-static const char col_gray3[]       = "#bd93f9";
-static const char col_gray4[]       = "#50fa7b";
-static const char col_cyan[]        = "#282a36";
+static const char *fonts[]          = { "Fira Code:size=10", "Symbols Nerd Font:size=10" };
+static const char dmenufont[]       =   "Fira Code:size=10";
+static const char col_gray1[]       = "#23252E";
+static const char col_gray2[]       = "#292c37";
+static const char col_gray3[]       = "#277fff";
+static const char col_gray4[]       = "#47D4B9" /* "#FEA44C" */ ;
+static const char col_cyan[]        = "#23252E";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
