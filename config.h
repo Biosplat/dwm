@@ -1,19 +1,19 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 0;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "Fira Code:size=10", "Symbols Nerd Font:size=10" };
 static const char dmenufont[]       =   "Fira Code:size=10";
-static const char col_gray1[]       = "#23252E";
-static const char col_gray2[]       = "#292c37";
+static const char col_gray1[]       = "#1F2229";
+static const char col_gray2[]       = "#292c37"; // Inactive Border
 static const char col_gray3[]       = "#277fff";
-static const char col_gray4[]       = "#47D4B9" /* "#FEA44C" */ ;
-static const char col_cyan[]        = "#23252E";
+static const char col_gray4[]       = "#1F2229" /* "#FEA44C" */ ;
+static const char col_cyan[]        = "#277FFF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -59,7 +59,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
+static const char* dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray3, "-sf", col_gray1, NULL};
 static const char *termcmd[]  = { "st", NULL };
 static const char* next_cmd[] = { "playerctl", "next" };
 static const char* prev_cmd[] = { "playerctl", "previous" };
