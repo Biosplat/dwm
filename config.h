@@ -9,11 +9,17 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
 static const char *fonts[]          = { "Fira Code:size=10", "Symbols Nerd Font:size=10" };
 static const char dmenufont[]       =   "Fira Code:size=10";
-static const char col_gray1[]       = "#1F2229";
-static const char col_gray2[]       = "#292c37"; // Inactive Border
-static const char col_gray3[]       = "#277fff";
-static const char col_gray4[]       = "#1F2229" /* "#FEA44C" */ ;
-static const char col_cyan[]        = "#277FFF";
+
+#define ACCENT "#277fff"
+//#define ACCENT "#47d4b9" 
+#define BACKGROUND "#1F2229"
+#define BORDER "#292c37"
+
+static const char col_gray1[]       = BACKGROUND; // Static
+static const char col_gray2[]       = BORDER; // Static - Inactive Border
+static const char col_gray3[]       = ACCENT; //"#277fff"; // Accent 1
+static const char col_gray4[]       = BACKGROUND; // Static
+static const char col_cyan[]        = ACCENT; //"#277FFF"; // Accent 1
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -63,9 +69,10 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray2, "-sf", col_gray4, NULL };
 static const char* dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray3, "-sf", col_gray1, NULL};
-static const char *termcmd[]  = { "st", "zsh" };
-static const char* next_cmd[] = { "playerctl", "next" };
-static const char* prev_cmd[] = { "playerctl", "previous" };
+static const char* termcmd[]  = { "st", "zsh", NULL };
+static const char* next_cmd[] = { "playerctl", "next", NULL };
+static const char* prev_cmd[] = { "playerctl", "previous", NULL };
+static const char* browsercmd[] = { "firefox", NULL };
 // static const char* stop_cmd[] = { "playerctl", "pause" };
 // static const char* play_cmd[] = { "playerctl", "play" };
 
@@ -74,6 +81,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY, 											XK_w, 		 spawn,					 {.v = browsercmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
