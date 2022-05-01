@@ -33,10 +33,10 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
+	{ "|M|",      centeredmaster },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
 };
 
@@ -55,8 +55,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char* dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char* termcmd[]  = { "st", "zsh", NULL };
-static const char* next_cmd[] = { "playerctl", "next", NULL };
-static const char* prev_cmd[] = { "playerctl", "previous", NULL };
 static const char* browsercmd[] = { "firefox", NULL };
 
 static Key keys[] = {
@@ -74,10 +72,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_o,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -95,8 +93,8 @@ static Key keys[] = {
 	{ MODKEY,						XK_F9,	   spawn,		   SHCMD("pactl set-sink-mute $(pactl get-default-sink) toggle")},
 	{ MODKEY|ShiftMask,				XK_Right,  spawn,		   SHCMD("playerctl next")},
 	{ MODKEY|ShiftMask,				XK_Left,  spawn,		   SHCMD("playerctl previous")},
-	{0,								XF86XK_AudioNext, spawn,   {.v = next_cmd}},
-	{0,								XF86XK_AudioPrev, spawn,   {.v = prev_cmd}},
+	{0,								XF86XK_AudioNext, spawn,   SHCMD("playerctl next")},
+	{0,								XF86XK_AudioPrev, spawn,   SHCMD("playerctl previous")},
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
