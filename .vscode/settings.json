@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"xft.h": "c",
+		"stdio.h": "c",
+		"util.h": "c",
+		"stdarg.h": "c",
+		"xinerama.h": "c",
+		"drw.h": "c",
+		"random": "c",
+		"string.h": "c",
+		"mocha.h": "c",
+		"onedark.h": "c"
+	}
+}
